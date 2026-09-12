@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香草商品與生活選物 ｜ Julia 香草生活</title>
+<meta name="description" content="Julia 香草生活家的手作商品——島嶼米花系列、手作香氛、調味系列與香料茶包。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --olive:#7C8B7A;
+    --olive-dark:#586456;
+    --beige:#f2efe6;
+    --beige-deep:#e6e1d2;
+    --wood:#7d8478;
+    --wood-dark:#4a5248;
+    --cream:#f8f6ef;
+    --ink:#3b4238;
+    --line:rgba(90,100,86,0.2);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Noto Sans TC","Noto Serif TC",serif;
+    color:var(--ink);
+    background:linear-gradient(160deg, #eef0ea 0%, #d7dccf 55%, #b9c0ab 100%) fixed;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:"Noto Serif TC",serif;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px;}
+
+  .menu-toggle{
+    position:fixed;top:14px;left:14px;z-index:60;width:40px;height:40px;border-radius:10px;
+    background:rgba(248,246,239,0.95);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:1.15rem;color:var(--wood-dark);cursor:pointer;
+  }
+  .sidebar{
+    position:fixed;top:0;left:0;height:100vh;width:220px;background:var(--cream);
+    border-right:1px solid var(--line);padding:36px 22px;display:flex;flex-direction:column;
+    transform:translateX(-100%);transition:transform 0.3s ease;z-index:59;overflow-y:auto;
+  }
+  .sidebar .brandmark{
+    font-family:"Noto Serif TC",serif;font-size:1.02rem;font-weight:700;color:var(--olive-dark);
+    display:flex;flex-direction:column;align-items:center;gap:3px;margin-bottom:32px;text-align:center;
+  }
+  .sidebar .brandmark span{font-family:"Noto Sans TC",sans-serif;font-size:0.6rem;font-weight:400;color:var(--wood);letter-spacing:0.1em;}
+  .side-links{display:flex;flex-direction:column;gap:3px;}
+  .side-plant{margin-top:auto;padding-top:24px;width:66%;align-self:center;opacity:0.9;transform-origin:50% 100%;animation:leaf-sway 4.5s ease-in-out infinite;}
+  @keyframes leaf-sway{0%,100%{transform:rotate(-14deg);}50%{transform:rotate(14deg);}}
+  @media (prefers-reduced-motion: reduce){.side-plant{animation:none;}}
+  .side-links a{font-size:0.86rem;padding:10px 12px;border-radius:10px;color:var(--wood-dark);transition:background 0.2s, color 0.2s;}
+  .side-links a:hover, .side-links a.active{background:var(--olive);color:#fff;}
+  .sidebar-backdrop{position:fixed;inset:0;background:rgba(58,66,56,0.35);z-index:58;display:none;}
+  body.nav-open .sidebar{transform:translateX(0);}
+  body.nav-open .sidebar-backdrop{display:block;}
+  @media (min-width:900px){
+    .menu-toggle{display:none;}
+    .sidebar{transform:none;}
+    .sidebar-backdrop{display:none !important;}
+    .page{margin-left:220px;}
+  }
+
+  .page-head{
+    padding:56px 0 8px;
+    text-align:center;
+  }
+  .back-link{
+    display:inline-block;
+    font-size:0.86rem;
+    color:var(--olive-dark);
+    margin-bottom:22px;
+    border-bottom:1px solid var(--olive-dark);
+    padding-bottom:2px;
+  }
+  .page-head .section-eyebrow{
+    font-size:0.78rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--olive);
+    margin-bottom:14px;
+  }
+  .page-head h1{
+    font-size:clamp(1.6rem,3.4vw,2.2rem);
+    color:var(--wood-dark);
+    margin-bottom:16px;
+  }
+  .page-head p{color:var(--wood);font-size:0.98rem;}
+
+  section{padding:56px 0;}
+  .sub-block{margin-top:64px;}
+  .sub-block:first-child{margin-top:0;}
+  .sub-block-head{margin-bottom:26px;}
+  .sub-block-head h3{
+    font-size:1.15rem;
+    color:var(--wood-dark);
+    margin-bottom:6px;
+  }
+  .sub-block-head p{font-size:0.88rem;color:var(--wood);}
+
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+  .product-card{
+    display:block;
+    background:var(--beige);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px 22px;
+    transition:transform 0.25s, box-shadow 0.25s;
+  }
+  .product-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 26px rgba(74,82,72,0.12);
+  }
+  .product-cover{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    border-radius:8px;
+    margin-bottom:14px;
+    border:1px solid var(--line);
+  }
+  .product-card h4{
+    font-size:0.98rem;
+    color:var(--wood-dark);
+    margin-bottom:6px;
+    line-height:1.5;
+  }
+  .product-card p{
+    font-size:0.82rem;
+    color:var(--wood);
+  }
+  .price-tag{
+    display:inline-block;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    color:var(--olive-dark);
+    background:rgba(124,139,122,0.14);
+    border-radius:999px;
+    padding:3px 12px;
+    margin-bottom:10px;
+  }
+  .pub-note{
+    font-size:0.82rem;
+    color:var(--wood);
+    margin-top:16px;
+    font-style:italic;
+  }
+  @media (max-width:760px){
+    .product-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    .product-grid{grid-template-columns:1fr;}
+  }
+
+  footer{
+    background:
+      linear-gradient(180deg, rgba(58,66,56,0.86) 0%, rgba(58,66,56,0.93) 100%),
+      url('底圖小/S__197091330.jpg') center / cover no-repeat;
+    color:rgba(248,246,239,0.8);
+    padding:56px 0 32px;
+    text-align:center;
+  }
+  footer .brandmark{color:#fff;justify-content:center;margin-bottom:8px;}
+  footer .foot-links{
+    display:flex;justify-content:center;gap:22px;
+    flex-wrap:wrap;margin:24px 0;
+    font-size:0.88rem;
+  }
+  footer .foot-links a:hover{color:var(--beige);}
+  footer .copyright{
+    font-size:0.78rem;
+    color:rgba(248,246,239,0.45);
+    margin-top:20px;
+  }
+
+  .line-fab{
+    position:fixed;right:20px;bottom:20px;z-index:70;
+    background:#06C755;color:#fff !important;
+    padding:12px 20px;border-radius:999px;
+    font-size:0.85rem;font-weight:700;
+    display:flex;align-items:center;gap:7px;
+    box-shadow:0 8px 20px rgba(6,199,85,0.35);
+    transition:transform 0.2s, box-shadow 0.2s;
+  }
+  .line-fab:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(6,199,85,0.45);}
+  .line-fab svg{width:20px;height:20px;flex:0 0 auto;}
+  @media (max-width:480px){
+    .line-fab{right:14px;bottom:14px;padding:11px 16px;font-size:0.8rem;}
+  }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" onclick="document.body.classList.toggle('nav-open')" aria-label="開啟選單">☰</button>
+<div class="sidebar-backdrop" onclick="document.body.classList.remove('nav-open')"></div>
+<nav class="sidebar">
+  <a href="index.html#top" class="brandmark">Julia香草生活<span>中年花火 · MID-LIFE BLOSSOM</span></a>
+  <div class="side-links">
+    <a href="about.html">遇見 Julia</a>
+    <a href="workshops.html">香草餐會 &amp; 工作坊</a>
+    <a href="shop.html" class="active">香草商品與生活選物</a>
+    <a href="garden.html">Julia香草花園</a>
+    <a href="travel.html">旅行記錄與生活隨筆</a>
+    <a href="podcast.html">中年花火 Podcast</a>
+  </div>
+  <img class="side-plant" src="rosemary-sprig.png" alt="一小束迷迭香水彩插畫">
+</nav>
+
+<div class="page">
+<div class="wrap page-head">
+  <a href="index.html" class="back-link">← 回到首頁</a>
+  <div class="section-eyebrow">Shop</div>
+  <h1>香草商品與生活選物</h1>
+  <p>把香草生活帶回家——手作香氛、調味香草鹽、島嶼米花與香料茶包</p>
+</div>
+
+<section>
+  <div class="wrap">
+
+    <div class="sub-block" id="ricegrain">
+      <div class="sub-block-head">
+        <h3>島嶼米花系列</h3>
+        <p>J.K Herb 香草生活聚落 · 米香與花草的日常茶飲</p>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/米香棒.jpg" alt="島嶼米花系列米香棒">
+          <h4>米香棒</h4>
+          <p>手工米香棒，多種口味，茶點零嘴的好夥伴。</p>
+        </div>
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/米花茶~玫瑰玄米.jpg" alt="米花茶玫瑰玄米">
+          <h4>米花茶．玫瑰玄米</h4>
+          <p>玄米、花茶與玫瑰的溫潤茶湯，可冷泡熱沖。</p>
+        </div>
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/島嶼米花茶~薰衣草紫米.jpg" alt="島嶼米花茶薰衣草紫米">
+          <h4>島嶼米花茶．薰衣草紫米</h4>
+          <p>紫米與薰衣草花茶交融，茶色瑰麗、香氣安神。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-block" id="fragrance">
+      <div class="sub-block-head">
+        <h3>手作香氛</h3>
+        <p>純天然精油與乾燥花草，點亮居家的香氣角落</p>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/森。香草杯蠟.jpg" alt="森呼吸大豆杯蠟">
+          <span class="price-tag">$880</span>
+          <h4>森呼吸．大豆杯蠟（150g）</h4>
+          <p>白玉蘭葉、馬鞭草酮迷迭香等森氛複方精油，環保大豆蠟，燃燒40–45小時，附贈風乾香草可自製香包。</p>
+        </div>
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/香草大茶燭.jpg" alt="香草大茶燭">
+          <h4>香草大茶燭（6入禮盒）</h4>
+          <p>每顆嵌入不同乾燥花草，20g / 可點燃5–6小時。</p>
+        </div>
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/有機手工採收柚花純露.jpg" alt="有機手工採收柚花純露">
+          <h4>有機手工採收．柚花純露</h4>
+          <p>自家柚花手工蒸餾，天然花香噴霧，可作為肌膚與居家香氛。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-block" id="seasoning">
+      <div class="sub-block-head">
+        <h3>調味系列</h3>
+        <p>來自 Julia 露天香草花園的風味鹽、醋與花糖</p>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/紅紫蘇塩.jpg" alt="紅紫蘇塩">
+          <span class="price-tag">$100</span>
+          <h4>紅紫蘇塩（30g）</h4>
+          <p>紫蘇葉與里仁有機海塩，適合醃漬、涼拌、飯糰與壽司米飯。</p>
+        </div>
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/檸檬香茅馬告塩.jpg" alt="檸檬香茅馬告塩">
+          <span class="price-tag">$100</span>
+          <h4>檸檬香茅馬告塩（30g）</h4>
+          <p>自家檸檬香茅配上烏來野生馬告，適合烤根莖蔬菜、燉湯與咖哩調味。</p>
+        </div>
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/芳香萬壽菊醋.jpeg" alt="芳香萬壽菊醋">
+          <h4>芳香萬壽菊醋</h4>
+          <p>萬壽菊花瓣釀製，調飲、涼拌皆宜的花果酸香。</p>
+        </div>
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/紅紫蘇醋.jpeg" alt="紅紫蘇醋">
+          <h4>紅紫蘇醋</h4>
+          <p>紫蘇入釀，酸甜開胃，兌氣泡水就是消暑飲品。</p>
+        </div>
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/大馬士革玫瑰花糖.jpg" alt="大馬士革玫瑰花糖">
+          <h4>大馬士革玫瑰花糖</h4>
+          <p>手摘大馬士革玫瑰花瓣漬糖，沖泡花茶或入飲品皆迷人。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-block" id="spice">
+      <div class="sub-block-head">
+        <h3>香料茶包</h3>
+        <p>異國香料的溫暖滋味，在家也能沖煮一杯</p>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/印度奶茶香料包.jpeg" alt="印度奶茶香料包">
+          <h4>印度奶茶香料包</h4>
+          <p>肉桂、荳蔻與薑黃等辛香料，煮一壺暖胃的印度奶茶。</p>
+        </div>
+        <div class="product-card">
+          <img class="product-cover" src="julia商品照/熱紅酒香料包.jpg" alt="熱紅酒香料包">
+          <h4>熱紅酒香料包</h4>
+          <p>肉桂、八角、丁香與乾燥橙片，冬夜一鍋暖香熱紅酒。</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="pub-note">部分品項為季節限定或少量手作，實際庫存與購買方式請洽詢 Julia。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html#top" class="brandmark">Julia 香草生活 × 中年花火</a>
+    <div class="foot-links">
+      <a href="about.html">遇見 Julia</a>
+      <a href="workshops.html">香草餐會 &amp; 工作坊</a>
+      <a href="shop.html">生活選物</a>
+      <a href="garden.html">香草花園</a>
+      <a href="travel.html">旅行隨筆</a>
+      <a href="podcast.html">Podcast</a>
+    </div>
+    <div class="copyright">© 2026 Julia 香草生活 · 中年花火. All rights reserved.</div>
+  </div>
+</footer>
+</div>
+
+<a class="line-fab" href="https://page.line.me/jkherb" target="_blank" rel="noopener" aria-label="加入官方LINE好友">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M12 2C6.48 2 2 5.94 2 10.7c0 4.27 3.58 7.85 8.42 8.55.33.07.77.22.88.5.1.26.07.66.03.92l-.14.87c-.04.26-.2 1 .88.55 1.08-.46 5.82-3.43 7.94-5.87C21.3 13.98 22 12.4 22 10.7 22 5.94 17.52 2 12 2z"/></svg>
+  加入 LINE 好友
+</a>
+</body>
+</html>

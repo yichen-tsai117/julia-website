@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香草餐會與工作坊 ｜ Julia 香草生活</title>
+<meta name="description" content="Julia 香草生活家的香草工作坊、餐會與講座場地邀約。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --olive:#7C8B7A;--olive-dark:#586456;--beige:#f2efe6;--beige-deep:#e6e1d2;
+    --wood:#7d8478;--wood-dark:#4a5248;--cream:#f8f6ef;--ink:#3b4238;--line:rgba(90,100,86,0.2);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Noto Sans TC","Noto Serif TC",serif;color:var(--ink);
+    background:linear-gradient(160deg, #eef0ea 0%, #d7dccf 55%, #b9c0ab 100%) fixed;
+    line-height:1.8;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:"Noto Serif TC",serif;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px;}
+
+  .menu-toggle{
+    position:fixed;top:14px;left:14px;z-index:60;width:40px;height:40px;border-radius:10px;
+    background:rgba(248,246,239,0.95);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:1.15rem;color:var(--wood-dark);cursor:pointer;
+  }
+  .sidebar{
+    position:fixed;top:0;left:0;height:100vh;width:220px;background:var(--cream);
+    border-right:1px solid var(--line);padding:36px 22px;display:flex;flex-direction:column;
+    transform:translateX(-100%);transition:transform 0.3s ease;z-index:59;overflow-y:auto;
+  }
+  .sidebar .brandmark{
+    font-family:"Noto Serif TC",serif;font-size:1.02rem;font-weight:700;color:var(--olive-dark);
+    display:flex;flex-direction:column;align-items:center;gap:3px;margin-bottom:32px;text-align:center;
+  }
+  .sidebar .brandmark span{font-family:"Noto Sans TC",sans-serif;font-size:0.6rem;font-weight:400;color:var(--wood);letter-spacing:0.1em;}
+  .side-links{display:flex;flex-direction:column;gap:3px;}
+  .side-plant{margin-top:auto;padding-top:24px;width:66%;align-self:center;opacity:0.9;transform-origin:50% 100%;animation:leaf-sway 4.5s ease-in-out infinite;}
+  @keyframes leaf-sway{0%,100%{transform:rotate(-14deg);}50%{transform:rotate(14deg);}}
+  @media (prefers-reduced-motion: reduce){.side-plant{animation:none;}}
+  .side-links a{font-size:0.86rem;padding:10px 12px;border-radius:10px;color:var(--wood-dark);transition:background 0.2s, color 0.2s;}
+  .side-links a:hover, .side-links a.active{background:var(--olive);color:#fff;}
+  .sidebar-backdrop{position:fixed;inset:0;background:rgba(58,66,56,0.35);z-index:58;display:none;}
+  body.nav-open .sidebar{transform:translateX(0);}
+  body.nav-open .sidebar-backdrop{display:block;}
+  @media (min-width:900px){
+    .menu-toggle{display:none;}
+    .sidebar{transform:none;}
+    .sidebar-backdrop{display:none !important;}
+    .page{margin-left:220px;}
+  }
+
+  .page-head{padding:56px 0 8px;text-align:center;}
+  .back-link{display:inline-block;font-size:0.82rem;color:var(--olive-dark);margin-bottom:18px;border-bottom:1px solid var(--olive-dark);padding-bottom:2px;}
+  .section-eyebrow{font-size:0.66rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--olive);margin-bottom:10px;}
+  .page-head h1{font-size:clamp(1.3rem,2.6vw,1.7rem);color:var(--wood-dark);margin-bottom:10px;}
+  .page-head p{color:var(--wood);font-size:0.86rem;}
+
+  section{padding:36px 0;}
+  .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .card{background:var(--beige);border:1px solid var(--line);border-radius:14px;padding:22px 20px;transition:transform 0.25s, box-shadow 0.25s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(78,58,41,0.12);}
+  .card-icon{
+    width:38px;height:38px;border-radius:10px;background:var(--olive);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:1.05rem;margin-bottom:12px;
+  }
+  .card h3{font-size:0.94rem;color:var(--wood-dark);margin-bottom:6px;}
+  .card p{font-size:0.8rem;color:var(--wood);margin-bottom:12px;}
+  .card a.link{font-size:0.76rem;color:var(--olive-dark);font-weight:600;border-bottom:1px solid var(--olive-dark);padding-bottom:2px;}
+
+  .gallery-head{margin:44px 0 18px;}
+  .gallery-head h3{font-size:1rem;color:var(--wood-dark);margin-bottom:4px;}
+  .gallery-head p{font-size:0.8rem;color:var(--wood);}
+  .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .gallery-grid img{
+    width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;border:1px solid var(--line);
+  }
+
+  footer{background:
+      linear-gradient(180deg, rgba(58,66,56,0.86) 0%, rgba(58,66,56,0.93) 100%),
+      url('底圖小/S__197091330.jpg') center / cover no-repeat;color:rgba(248,246,239,0.8);padding:40px 0 26px;text-align:center;}
+  footer .brandmark{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;font-size:0.92rem;margin-bottom:6px;display:inline-block;}
+  footer .foot-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:16px 0;font-size:0.78rem;}
+  footer .foot-links a:hover{color:var(--beige);}
+  footer .copyright{font-size:0.7rem;color:rgba(248,246,239,0.45);margin-top:14px;}
+
+  @media (max-width:760px){.card-grid{grid-template-columns:1fr;}}
+  @media (max-width:600px){.gallery-grid{grid-template-columns:1fr;}}
+  .line-fab{
+    position:fixed;right:20px;bottom:20px;z-index:70;
+    background:#06C755;color:#fff !important;
+    padding:12px 20px;border-radius:999px;
+    font-size:0.85rem;font-weight:700;
+    display:flex;align-items:center;gap:7px;
+    box-shadow:0 8px 20px rgba(6,199,85,0.35);
+    transition:transform 0.2s, box-shadow 0.2s;
+  }
+  .line-fab:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(6,199,85,0.45);}
+  .line-fab svg{width:20px;height:20px;flex:0 0 auto;}
+  @media (max-width:480px){
+    .line-fab{right:14px;bottom:14px;padding:11px 16px;font-size:0.8rem;}
+  }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" onclick="document.body.classList.toggle('nav-open')" aria-label="開啟選單">☰</button>
+<div class="sidebar-backdrop" onclick="document.body.classList.remove('nav-open')"></div>
+<nav class="sidebar">
+  <a href="index.html#top" class="brandmark">Julia香草生活<span>中年花火 · MID-LIFE BLOSSOM</span></a>
+  <div class="side-links">
+    <a href="about.html">遇見 Julia</a>
+    <a href="workshops.html" class="active">香草餐會 &amp; 工作坊</a>
+    <a href="shop.html">香草商品與生活選物</a>
+    <a href="garden.html">Julia香草花園</a>
+    <a href="travel.html">旅行記錄與生活隨筆</a>
+    <a href="podcast.html">中年花火 Podcast</a>
+  </div>
+  <img class="side-plant" src="rosemary-sprig.png" alt="一小束迷迭香水彩插畫">
+</nav>
+
+<div class="page">
+  <div class="wrap page-head">
+    <a href="index.html" class="back-link">← 回到首頁</a>
+    <div class="section-eyebrow">Workshop</div>
+    <h1>香草餐會 &amp; 香草工作坊</h1>
+    <p>講座邀約、場地合作、手作課程——用香草連結一場相遇</p>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">✦</div>
+          <h3>香草生活工作坊</h3>
+          <p>從辨識、栽種到料理與香氛應用，帶大家用五感認識香草。</p>
+          <a class="link" href="#">了解更多 →</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">✦</div>
+          <h3>香草餐會 / 手作日</h3>
+          <p>結合節氣與香草的餐桌體驗，適合企業、社群包場。</p>
+          <a class="link" href="#">了解更多 →</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">✦</div>
+          <h3>講座與場地邀約</h3>
+          <p>歡迎機構、學校、企業邀約專題講座，共同企劃合適的內容。</p>
+          <a class="link" href="#">合作洽詢 →</a>
+        </div>
+      </div>
+
+      <div class="gallery-head">
+        <h3>現場側寫</h3>
+        <p>香草蒸餾、手採與工作坊現場的幾個片刻</p>
+      </div>
+      <div class="gallery-grid">
+        <img src="julia商品照/julia手採.jpg" alt="Julia 在溫室裡整理剛採收的香草花材">
+        <img src="julia商品照/手採香草香氛.jpg" alt="採收的萬壽菊與手作香包">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <a href="index.html#top" class="brandmark">Julia 香草生活 × 中年花火</a>
+      <div class="foot-links">
+        <a href="about.html">遇見 Julia</a>
+        <a href="workshops.html">香草餐會 &amp; 工作坊</a>
+        <a href="shop.html">生活選物</a>
+        <a href="garden.html">香草花園</a>
+        <a href="travel.html">旅行隨筆</a>
+        <a href="podcast.html">Podcast</a>
+      </div>
+      <div class="copyright">© 2026 Julia 香草生活 · 中年花火. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<a class="line-fab" href="https://page.line.me/jkherb" target="_blank" rel="noopener" aria-label="加入官方LINE好友">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M12 2C6.48 2 2 5.94 2 10.7c0 4.27 3.58 7.85 8.42 8.55.33.07.77.22.88.5.1.26.07.66.03.92l-.14.87c-.04.26-.2 1 .88.55 1.08-.46 5.82-3.43 7.94-5.87C21.3 13.98 22 12.4 22 10.7 22 5.94 17.52 2 12 2z"/></svg>
+  加入 LINE 好友
+</a>
+</body>
+</html>
