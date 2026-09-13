@@ -94,6 +94,20 @@
     padding:16px;transition:transform 0.25s, box-shadow 0.25s;
   }
   a.book-card, a.column-card{cursor:pointer;}
+  .carousel{position:relative;width:100%;aspect-ratio:3/2;border-radius:10px;overflow:hidden;margin-bottom:12px;background:#000;}
+  .carousel-track{display:flex;height:100%;transition:transform 0.35s ease;}
+  .carousel-track img{width:100%;height:100%;object-fit:cover;flex:0 0 100%;}
+  .car-btn{
+    position:absolute;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;
+    background:rgba(0,0,0,0.4);color:#fff;border:none;display:flex;align-items:center;justify-content:center;
+    cursor:pointer;font-size:1.1rem;line-height:1;z-index:2;transition:background 0.2s;
+  }
+  .car-btn:hover{background:rgba(0,0,0,0.65);}
+  .car-prev{left:8px;}
+  .car-next{right:8px;}
+  .car-dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:2;}
+  .car-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5);cursor:pointer;transition:background 0.2s;}
+  .car-dots span.active{background:#fff;}
   .book-cover{width:100%;aspect-ratio:3/4;object-fit:contain;background:#fff;border-radius:8px;margin-bottom:12px;border:1px solid var(--line);}
   .book-card:hover, .column-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(74,82,72,0.12);}
   .book-card h4, .column-card h4{font-size:0.88rem;color:var(--wood-dark);margin-bottom:4px;line-height:1.45;}
@@ -226,16 +240,46 @@
           <p>自由時報連載，用文字記錄香草日常</p>
         </div>
         <div class="column-grid">
-          <a class="column-card" href="https://art.ltn.com.tw/article/paper/1635792" target="_blank" rel="noopener">
+          <div class="column-card">
+            <div class="carousel" data-carousel>
+              <div class="carousel-track">
+                <img src="香草插畫+圖檔/專欄插畫/202302.JPG" alt="兩位太太的香料餐桌插畫">
+                <img src="香草插畫+圖檔/專欄插畫/202305.JPG" alt="兩位太太的香料餐桌插畫">
+                <img src="香草插畫+圖檔/專欄插畫/202310.JPG" alt="兩位太太的香料餐桌插畫">
+                <img src="香草插畫+圖檔/專欄插畫/202311.JPG" alt="兩位太太的香料餐桌插畫">
+                <img src="香草插畫+圖檔/專欄插畫/202408.JPG" alt="兩位太太的香料餐桌插畫">
+                <img src="香草插畫+圖檔/專欄插畫/202410.JPG" alt="兩位太太的香料餐桌插畫">
+                <img src="香草插畫+圖檔/專欄插畫/202411.JPG" alt="兩位太太的香料餐桌插畫">
+                <img src="香草插畫+圖檔/專欄插畫/202412.jpeg" alt="兩位太太的香料餐桌插畫">
+              </div>
+              <button type="button" class="car-btn car-prev" aria-label="上一張">‹</button>
+              <button type="button" class="car-btn car-next" aria-label="下一張">›</button>
+              <div class="car-dots"></div>
+            </div>
             <span class="column-year">2022–2024</span>
             <h4>兩位太太的香料餐桌</h4>
             <p>自由時報〈家庭plus〉專欄，與清邁媳婦 Kook 一起，用香料跨越語言的餐桌對話。（範例：〈春日 香草茶食〉）</p>
-          </a>
-          <a class="column-card" href="https://art.ltn.com.tw/article/paper/1378342" target="_blank" rel="noopener">
+            <a class="link" href="https://art.ltn.com.tw/article/paper/1635792" target="_blank" rel="noopener">閱讀專欄 →</a>
+          </div>
+          <div class="column-card">
+            <div class="carousel" data-carousel>
+              <div class="carousel-track">
+                <img src="香草插畫+圖檔/專欄圖片/DSC01136.JPG" alt="日常幸福微光專欄照片">
+                <img src="香草插畫+圖檔/專欄圖片/IMG_1314.JPG" alt="日常幸福微光專欄照片">
+                <img src="香草插畫+圖檔/專欄圖片/IMG_1520.JPG" alt="日常幸福微光專欄照片">
+                <img src="香草插畫+圖檔/專欄圖片/IMG_2849_副本.jpg" alt="日常幸福微光專欄照片">
+                <img src="香草插畫+圖檔/專欄圖片/IMG_2986.jpg" alt="日常幸福微光專欄照片">
+                <img src="香草插畫+圖檔/專欄圖片/IMG_3066.JPG" alt="日常幸福微光專欄照片">
+              </div>
+              <button type="button" class="car-btn car-prev" aria-label="上一張">‹</button>
+              <button type="button" class="car-btn car-next" aria-label="下一張">›</button>
+              <div class="car-dots"></div>
+            </div>
             <span class="column-year">2025</span>
             <h4>香草生活家Julia～日常幸福微光</h4>
             <p>自由時報專欄，記錄香草日常裡，一點一點被療癒的微光時刻。</p>
-          </a>
+            <a class="link" href="https://art.ltn.com.tw/article/paper/1378342" target="_blank" rel="noopener">閱讀專欄 →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -264,5 +308,26 @@
   </footer>
 </div>
 
+<script>
+document.querySelectorAll('[data-carousel]').forEach(function(car){
+  var track = car.querySelector('.carousel-track');
+  var imgs = track.querySelectorAll('img');
+  var dotsWrap = car.querySelector('.car-dots');
+  var idx = 0;
+  imgs.forEach(function(_, i){
+    var d = document.createElement('span');
+    if(i === 0) d.className = 'active';
+    d.addEventListener('click', function(){ go(i); });
+    dotsWrap.appendChild(d);
+  });
+  function go(i){
+    idx = (i + imgs.length) % imgs.length;
+    track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+    dotsWrap.querySelectorAll('span').forEach(function(d, j){ d.className = j === idx ? 'active' : ''; });
+  }
+  car.querySelector('.car-prev').addEventListener('click', function(){ go(idx - 1); });
+  car.querySelector('.car-next').addEventListener('click', function(){ go(idx + 1); });
+});
+</script>
 </body>
 </html>
