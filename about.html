@@ -108,6 +108,19 @@
   .car-dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:2;}
   .car-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5);cursor:pointer;transition:background 0.2s;}
   .car-dots span.active{background:#fff;}
+  .scroll-gallery{
+    display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  }
+  .scroll-gallery img{
+    flex:0 0 auto;width:150px;height:150px;object-fit:cover;
+    border-radius:10px;border:1px solid var(--line);scroll-snap-align:start;
+  }
+  .scroll-gallery::-webkit-scrollbar{height:6px;}
+  .scroll-gallery::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px;}
+  @media (max-width:600px){
+    .scroll-gallery img{width:120px;height:120px;}
+  }
   .book-cover{width:100%;aspect-ratio:3/4;object-fit:contain;background:#fff;border-radius:8px;margin-bottom:12px;border:1px solid var(--line);}
   .book-card:hover, .column-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(74,82,72,0.12);}
   .book-card h4, .column-card h4{font-size:0.88rem;color:var(--wood-dark);margin-bottom:4px;line-height:1.45;}
@@ -281,6 +294,55 @@
             <p>自由時報專欄，記錄香草日常裡，一點一點被療癒的微光時刻。</p>
             <a class="link" href="https://art.ltn.com.tw/article/paper/1378342" target="_blank" rel="noopener">閱讀專欄 →</a>
           </div>
+        </div>
+      </div>
+
+      <div class="sub-block">
+        <div class="sub-block-head">
+          <h3>二十年生活紀錄</h3>
+          <p>香草生活運用的美好片刻</p>
+        </div>
+        <div class="scroll-gallery">
+          <img src="香草生活運用/217594859_4257229757672320_1540543337532912545_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/239657101_4368640656531229_536874051719449150_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/241455370_4430918166970144_7765114598578762545_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/247542256_4575645102497449_7929875829434403090_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/249317760_4591315727597053_3360308548129874742_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/251502996_4593982080663751_2142247809049957394_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/262782509_4697714186957206_2923910899046807095_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/264634330_4714767941918497_3037825824035951880_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/270016715_4795415827187041_1099888574060688653_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/270424554_4811099342285356_837793778137496973_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/274421378_4979051265490162_4369977079301760250_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/275240193_5018182904910331_5585414256749943762_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/284935195_5290019281060024_7104340437765888642_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/286637322_5290019434393342_59471373017994973_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/289043682_5327000600695225_5967642166754267755_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/300092933_5477560442305906_5439706089635411831_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/300382720_5502512479810702_1342913273002328633_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/301129488_5502511593144124_856383753599009003_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/310522182_5618534451541837_8964825788148785379_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/313419872_5691288187599796_364894149088067206_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/313437829_5716153158446632_1663004905296842424_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/323045573_3552341461756602_817461885387657091_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/340197094_816313523431455_1340482459015720363_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/343927525_533042578799225_8803452696606408821_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/344768428_913215979909117_6684727347566688553_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/345632750_576321567924232_1668409419132914489_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/346622195_660504302519764_4295070780888233966_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/346804320_133355346402081_7211480552916814172_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/348558490_248950514387658_5390152787282648018_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/348864956_978979330125233_1329885152483963306_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/349118604_1259786454654189_8484628219010389368_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/349155361_710632590864286_7042166444800089954_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/350993111_215800747884885_2237764597862143037_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/356628539_6444911022237505_32929844775769957_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/356930308_6459351190793488_6334630090281217263_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/361559118_6520417361353537_4390127116274915167_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/368212619_6627829603945645_8187722333204386948_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/410520301_7085073548221246_3548442942048179322_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/419874718_7174963649232235_6709908465539942411_n.jpg" alt="香草生活運用照片">
+          <img src="香草生活運用/421211281_7204502422945024_7771606597750217461_n.jpg" alt="香草生活運用照片">
         </div>
       </div>
     </div>
